@@ -1,6 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
-
+from tqdm import tqdm,trange
 
 
 def apply_sea_level(sealevel: int, topography: np.ndarray) -> np.ndarray:
@@ -29,7 +29,7 @@ def find_underwater_states(thresholded_topography: np.ndarray) -> np.ndarray:
     sea_connection = 0
     #iterate through the thresholded topography and populate the connected one
     neighbouring_indices = [-1,0,1]
-    for i in range(x_size):
+    for i in trange(x_size):
         for j in range(y_size):
             neighbors_checked = 0
             error_count = 0
@@ -66,7 +66,7 @@ def find_underwater_states(thresholded_topography: np.ndarray) -> np.ndarray:
     
     #iterate through the topography again to resolve conflicts, and remove any
     #states not connected to the edges
-    for i in range(x_size):
+    for i in trange(x_size):
         for j in range(y_size):
             #again offset the indices
             x, y = i + 1, j + 1
