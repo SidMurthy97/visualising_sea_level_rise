@@ -83,6 +83,8 @@ def find_underwater_states(thresholded_topography: np.ndarray) -> np.ndarray:
                     continue
 
                 connected_topography[x,y] = 10 if sea_connection > 0 else 0
-                
+    
+    # connected_topography = connected_topography.astype(bool)
+
     #return the non-padded connected topography
-    return connected_topography[1:-1,1:-1]
+    return connected_topography[1:-1,1:-1].astype(bool)
