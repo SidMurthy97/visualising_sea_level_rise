@@ -24,4 +24,13 @@ p = figure()
 
 # must give a vector of image data for image parameter
 p.image(image=[connected], x=0, y=0, dw=2, dh=2, palette="Spectral11")
-show(p)
+
+sealevel_slider = Slider(start=-5, end=5, value=1, step=.1, title="Sea Level")
+
+
+layout = row(
+    p,
+    column(sealevel_slider),
+)
+
+show(layout)
